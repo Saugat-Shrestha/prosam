@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import "package:prosam/bloc_view/equatable_testing.dart";
+import "package:prosam/bloc_view/login/login_screen.dart";
 import "package:prosam/views/home_view.dart";
 
 void main() {
@@ -11,7 +13,8 @@ class prosam extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomeView(),
+      debugShowCheckedModeBanner: false,
+      home: LoginScreen(),
     );
   }
 }

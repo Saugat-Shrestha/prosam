@@ -1,5 +1,8 @@
 import 'dart:isolate';
+import 'package:action_slider/action_slider.dart';
+import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
+import 'package:prosam/views/example.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -35,6 +38,28 @@ class HomeView extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {},
                 child: const Text('Task 3'),
+              ),
+
+              ActionSlider.standard(
+                sliderBehavior: SliderBehavior.stretch,
+                width: 300.0,
+                backgroundColor: Colors.white,
+                toggleColor: Colors.lightGreenAccent,
+                action: (controller) async {
+                  controller.loading();  
+                  await Future.delayed(const Duration(seconds: 3));
+                  controller.success();  
+                  await Future.delayed(const Duration(seconds: 1));
+                  controller.reset();   
+                },
+                child: const Text('Slide to confirm'),
+              ),
+
+              ExpandablePageView.builder(
+                itemCount: 3,
+                itemBuilder: (context, index) {
+                  return Example();
+                },
               ),
             ],
           ),
